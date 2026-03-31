@@ -29,7 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A participant visits a room URL, enters a display name, and lands in the room
   3. Every participant in a room sees a live list of all current members that updates when someone joins or leaves
   4. Two browser tabs in different rooms receive zero cross-room events
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Project scaffold: FastAPI backend + Vite/Tailwind v4 frontend
+- [ ] 01-02-PLAN.md — Backend room server: HTTP endpoints + WebSocket + in-memory room state
+- [ ] 01-03-PLAN.md — Frontend room UI: home page, name entry, live participant list
 
 ### Phase 2: Collaborative Editor
 **Goal**: All participants share one code editor with real-time CRDT sync, visible multi-cursors, and Python syntax highlighting
@@ -88,7 +92,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Room Infrastructure | 0/TBD | Not started | - |
+| 1. Room Infrastructure | 0/3 | Not started | - |
 | 2. Collaborative Editor | 0/TBD | Not started | - |
 | 3. Code Execution | 0/TBD | Not started | - |
 | 4. Host Controls | 0/TBD | Not started | - |
