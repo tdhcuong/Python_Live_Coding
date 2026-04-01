@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 01-room-infrastructure-01-PLAN.md
-last_updated: "2026-04-01T14:45:57.497Z"
+stopped_at: Completed 01-room-infrastructure-02-PLAN.md
+last_updated: "2026-04-01T14:48:36.000Z"
 last_activity: 2026-04-01 — Roadmap created, ready for phase 1 planning
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 33
+  completed_plans: 2
+  percent: 67
 ---
 
 # Project State
@@ -30,7 +30,7 @@ Plan: 0 of TBD in current phase
 Status: Ready to plan
 Last activity: 2026-04-01 — Roadmap created, ready for phase 1 planning
 
-Progress: [███░░░░░░░] 33%
+Progress: [██████░░░░] 67%
 
 ## Performance Metrics
 
@@ -67,6 +67,8 @@ Recent decisions affecting current work:
 - Timer design: server broadcasts started_at + duration once; each client counts down independently
 - [Phase 01-room-infrastructure]: Tailwind v4 uses @tailwindcss/vite plugin — no tailwind.config.js needed
 - [Phase 01-room-infrastructure]: CORS configured for both localhost:5173 and 127.0.0.1:5173 loopback variants
+- [Phase 01-02]: WebSocket endpoint accepts connection first, reads join_room message for name, then registers participant inline (name must precede registration)
+- [Phase 01-02]: participant_joined excludes joining participant via exclude_id; they receive their own info via room_state personal message
 
 ### Pending Todos
 
@@ -80,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-01T14:45:57.496Z
-Stopped at: Completed 01-room-infrastructure-01-PLAN.md
+Last session: 2026-04-01T14:48:36.000Z
+Stopped at: Completed 01-room-infrastructure-02-PLAN.md
 Resume file: None

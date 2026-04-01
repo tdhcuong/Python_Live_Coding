@@ -9,8 +9,8 @@
 
 - [x] **ROOM-01**: Host can create a new room and receive a unique shareable URL
 - [x] **ROOM-02**: Participant can join a room by visiting the room URL
-- [ ] **ROOM-03**: Participant sets a display name/nickname when joining
-- [ ] **ROOM-04**: All participants can see a live list of who is currently in the room
+- [x] **ROOM-03**: Participant sets a display name/nickname when joining
+- [x] **ROOM-04**: All participants can see a live list of who is currently in the room
 - [ ] **ROOM-05**: Host can copy the room link with a single click
 
 ### Editor
@@ -83,8 +83,8 @@
 |-------------|-------|--------|
 | ROOM-01 | Phase 1 | Complete |
 | ROOM-02 | Phase 1 | Complete |
-| ROOM-03 | Phase 1 | Pending |
-| ROOM-04 | Phase 1 | Pending |
+| ROOM-03 | Phase 1 | Complete |
+| ROOM-04 | Phase 1 | Complete |
 | ROOM-05 | Phase 5 | Pending |
 | EDIT-01 | Phase 2 | Pending |
 | EDIT-02 | Phase 2 | Pending |
