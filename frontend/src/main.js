@@ -1,10 +1,23 @@
 import "./style.css";
+import { renderHome } from "./pages/home.js";
+import { renderRoom } from "./pages/room.js";
 
-document.getElementById("app").innerHTML = `
-  <div class="flex items-center justify-center min-h-screen">
-    <div class="text-center">
-      <h1 class="text-3xl font-bold text-gray-100 mb-2">Python Live Coding</h1>
-      <p class="text-gray-400">Loading...</p>
-    </div>
-  </div>
-`;
+const app = document.getElementById("app");
+
+function route() {
+  const path = window.location.pathname;
+  const roomMatch = path.match(/^\/room\/([a-f0-9-]+)$/i);
+
+  if (roomMatch) {
+    const roomId = roomMatch[1];
+    renderRoom(app, roomId);
+  } else {
+    renderHome(app);
+  }
+}
+
+// Initial render
+route();
+
+// Handle browser back/forward and programmatic pushState
+window.addEventListener("popstate", route);
