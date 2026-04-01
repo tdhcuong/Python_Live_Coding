@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Two browser tabs in different rooms receive zero cross-room events
 **Plans**: 3 plans
 Plans:
-- [ ] 01-01-PLAN.md — Project scaffold: FastAPI backend + Vite/Tailwind v4 frontend
+- [x] 01-01-PLAN.md — Project scaffold: FastAPI backend + Vite/Tailwind v4 frontend
 - [ ] 01-02-PLAN.md — Backend room server: HTTP endpoints + WebSocket + in-memory room state
 - [ ] 01-03-PLAN.md — Frontend room UI: home page, name entry, live participant list
 
@@ -92,7 +92,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Room Infrastructure | 0/3 | Not started | - |
+| 1. Room Infrastructure | 1/3 | In Progress|  |
 | 2. Collaborative Editor | 0/TBD | Not started | - |
 | 3. Code Execution | 0/TBD | Not started | - |
 | 4. Host Controls | 0/TBD | Not started | - |
