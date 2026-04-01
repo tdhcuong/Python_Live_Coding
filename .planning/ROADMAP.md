@@ -45,7 +45,10 @@ Plans:
   3. A participant who joins after edits have been made sees the full current document state, not an empty editor
   4. Python keywords, strings, and syntax are visibly highlighted in the editor
   5. Line numbers are visible in the editor gutter
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — Backend Y.js relay: Room model accumulator + WebSocket relay for yjs_update/awareness_update + late-joiner flush + integration tests
+- [ ] 02-02-PLAN.md — Frontend collaborative editor: CodeMirror 6 + Y.js provider + syntax highlighting + multi-cursor + line numbers
 **UI hint**: yes
 
 ### Phase 3: Code Execution
@@ -93,7 +96,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Room Infrastructure | 3/3 | Complete   | 2026-04-01 |
-| 2. Collaborative Editor | 0/TBD | Not started | - |
+| 2. Collaborative Editor | 0/2 | Not started | - |
 | 3. Code Execution | 0/TBD | Not started | - |
 | 4. Host Controls | 0/TBD | Not started | - |
 | 5. Polish and Tunneling | 0/TBD | Not started | - |
