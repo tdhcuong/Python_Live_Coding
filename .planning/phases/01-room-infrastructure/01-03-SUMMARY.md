@@ -63,7 +63,7 @@ completed: 2026-04-01
 - **Duration:** ~10 min
 - **Started:** 2026-04-01T14:51:01Z
 - **Completed:** 2026-04-01T15:01:00Z
-- **Tasks:** 2 automated complete, 1 human checkpoint pending
+- **Tasks:** 3 of 3 (Tasks 1+2 automated, Task 3 human-verified and approved)
 - **Files modified:** 5
 
 ## Accomplishments
@@ -80,9 +80,9 @@ Each task was committed atomically:
 
 1. **Task 1: WebSocket client + client-side router + home page** - `ff0f6c2` (feat)
 2. **Task 2: Room page — name entry form and live participant list** - `610989d` (feat)
-3. **Task 3: Human checkpoint** - Pending manual browser verification
+3. **Task 3: Human verification checkpoint** - Approved (all 5 tests passed in live browser)
 
-**Plan metadata:** Pending final docs commit
+**Plan metadata:** `9fb180d` (docs: complete frontend room UI plan — awaiting human verify checkpoint)
 
 ## Files Created/Modified
 
@@ -107,37 +107,33 @@ None - plan executed exactly as written. One minor fix applied: the `renderRoomN
 
 None.
 
-## Human Checkpoint Required
+## Human Verification Results
 
-**Task 3 requires manual browser testing.** The automated tasks (1 and 2) are complete and committed. To verify Phase 1 is fully working:
+**Task 3: All 5 tests passed in live browser.**
 
-```bash
-# Terminal 1 — backend
-cd /Users/tdhcuong/Desktop/Personal_Projects/Python_Live_Coding/backend
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+1. Test 1 (ROOM-01): Dark-themed home page with "Python Live Coding" and "Create Room" button confirmed; clicking redirected to /room/{uuid}
+2. Test 2 (ROOM-02, ROOM-03): Name entry "Alice" connected via WebSocket; participant list showed Alice with "you" badge and green "Connected" status
+3. Test 3 (ROOM-04): Second tab joined same room as "Bob" — both tabs showed Alice and Bob; closing Bob's tab removed Bob from Alice's list with "Bob left" toast
+4. Test 4 (ROOM-04 isolation): "Charlie" in a separate room did not appear in Alice's participant list
+5. Test 5 (404 handling): Visiting /room/00000000-0000-0000-0000-000000000000 showed "Room Not Found" message, no broken page
 
-# Terminal 2 — frontend
-cd /Users/tdhcuong/Desktop/Personal_Projects/Python_Live_Coding/frontend
-npm run dev
-```
-
-**Tests to run:**
-
-1. Open http://localhost:5173 — verify dark-themed home page with "Create Room" button
-2. Click "Create Room" — verify redirect to /room/{uuid}
-3. Enter "Alice" and click "Enter Room" — verify participant list shows Alice with "you" badge and green "Connected" status
-4. Open a second tab to the same room URL, enter "Bob" — verify both tabs show Alice and Bob
-5. Close Bob's tab — verify Alice's tab removes Bob and shows "Bob left" toast
-6. Create a new room in a third tab, enter "Charlie" — verify Alice's tab does NOT show Charlie
-7. Navigate to /room/00000000-0000-0000-0000-000000000000 — verify "Room Not Found" message
+Phase 1 gate condition fully satisfied.
 
 ## Next Phase Readiness
 
-- Phase 1 automated implementation is complete; human verification checkpoint pending
+- Phase 1 gate condition met and verified: two tabs in same room see each other in real time, leave events update the list, cross-room isolation confirmed, 404 case handled cleanly
 - Room sidebar (`<main>` area) is reserved for Phase 2 editor — currently shows "Editor coming in Phase 2."
 - `createRoomWS` is extensible — Phase 2 can add `onCodeUpdate`, `onCursorMove` etc. handlers without touching the wrapper core
 - Participant color system is wired end-to-end from backend assignment through frontend color dot rendering
+
+## Self-Check: PASSED
+
+- frontend/src/ws.js: FOUND
+- frontend/src/pages/home.js: FOUND
+- frontend/src/pages/room.js: FOUND
+- Commit ff0f6c2: FOUND
+- Commit 610989d: FOUND
+- .planning/phases/01-room-infrastructure/01-03-SUMMARY.md: FOUND
 
 ---
 *Phase: 01-room-infrastructure*

@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "Completed 01-room-infrastructure-03-PLAN.md (checkpoint: awaiting human verify)"
-last_updated: "2026-04-01T14:54:00.172Z"
+stopped_at: Completed 01-room-infrastructure 01-03-PLAN.md — human verified, all 5 tests passed
+last_updated: "2026-04-01T17:47:31.554Z"
 last_activity: 2026-04-01 — Roadmap created, ready for phase 1 planning
 progress:
   total_phases: 5
@@ -54,6 +54,7 @@ Progress: [██████░░░░] 67%
 *Updated after each plan completion*
 | Phase 01-room-infrastructure P01 | 2 | 2 tasks | 9 files |
 | Phase 01-room-infrastructure P03 | 10 | 3 tasks | 5 files |
+| Phase 01-room-infrastructure P03 | 45 | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -72,6 +73,8 @@ Recent decisions affecting current work:
 - [Phase 01-02]: participant_joined excludes joining participant via exclude_id; they receive their own info via room_state personal message
 - [Phase 01-room-infrastructure]: createRoomWS sends join_room in WebSocket open handler — guarantees protocol step 1 fires before any other message
 - [Phase 01-room-infrastructure]: renderRoom is async and verifies room existence via GET /room/{id} before showing name form
+- [Phase 01-room-infrastructure]: createRoomWS sends join_room in WebSocket open handler — guarantees protocol step 1 fires before any other message
+- [Phase 01-room-infrastructure]: renderRoom is async and verifies room existence via GET /room/{id} before showing name form
 
 ### Pending Todos
 
@@ -85,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-01T14:54:00.171Z
-Stopped at: Completed 01-room-infrastructure-03-PLAN.md (checkpoint: awaiting human verify)
+Last session: 2026-04-01T17:47:31.553Z
+Stopped at: Completed 01-room-infrastructure 01-03-PLAN.md — human verified, all 5 tests passed
 Resume file: None
