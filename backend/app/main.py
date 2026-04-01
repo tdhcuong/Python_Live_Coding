@@ -1,3 +1,4 @@
+import base64
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -117,6 +118,11 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
     )
     room.participants[participant_id] = participant
 
+    # Phase 2: Flush accumulated Y.js doc state to late joiner (D-05)
+    for update_bytes in room.yjs_updates:
+        b64 = base64.b64encode(update_bytes).decode('ascii')
+        await manager.send_personal(websocket, {'type': 'yjs_update', 'update': b64})
+
     # Step 3: Send room_state to the new participant (personal, not broadcast)
     await manager.send_personal(websocket, {
         "type": "room_state",
@@ -142,11 +148,17 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
             data = await websocket.receive_json()
             msg_type = data.get("type")
 
-            # Currently only pass-through messages are handled.
-            # Phase 2 will add: "yjs_update", "awareness_update"
-            # Phase 4 will add: "set_problem", "start_timer"
-            # For now, echo unrecognized messages back as an error.
-            if msg_type is None:
+            if msg_type == "yjs_update":
+                # D-04/D-05: Accumulate raw bytes + relay to others (not sender)
+                raw = base64.b64decode(data["update"])
+                room.yjs_updates.append(raw)
+                await manager.broadcast_to_room(room_id, data, exclude_id=participant_id)
+
+            elif msg_type == "awareness_update":
+                # Awareness is transient — relay only, never accumulate (Pitfall 4)
+                await manager.broadcast_to_room(room_id, data, exclude_id=participant_id)
+
+            else:
                 await manager.send_personal(websocket, {
                     "type": "error",
                     "message": f"Unknown message type: {msg_type}",
