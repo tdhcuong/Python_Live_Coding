@@ -12,7 +12,7 @@ Build in strict dependency order: WebSocket room infrastructure first, then the 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Room Infrastructure** - WebSocket rooms, participant presence, and real-time join/leave events
+- [x] **Phase 1: Room Infrastructure** - WebSocket rooms, participant presence, and real-time join/leave events (completed 2026-04-01)
 - [ ] **Phase 2: Collaborative Editor** - Y.js CRDT sync, CodeMirror 6, multi-cursor presence, syntax highlighting
 - [ ] **Phase 3: Code Execution** - Sandboxed Python subprocess, output broadcast to all participants, execution UX
 - [ ] **Phase 4: Host Controls** - Problem description panel, countdown timer, host token gating, editor reset
@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md — Project scaffold: FastAPI backend + Vite/Tailwind v4 frontend
 - [x] 01-02-PLAN.md — Backend room server: HTTP endpoints + WebSocket + in-memory room state
-- [ ] 01-03-PLAN.md — Frontend room UI: home page, name entry, live participant list
+- [x] 01-03-PLAN.md — Frontend room UI: home page, name entry, live participant list
 
 ### Phase 2: Collaborative Editor
 **Goal**: All participants share one code editor with real-time CRDT sync, visible multi-cursors, and Python syntax highlighting
@@ -92,7 +92,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Room Infrastructure | 2/3 | In Progress|  |
+| 1. Room Infrastructure | 3/3 | Complete   | 2026-04-01 |
 | 2. Collaborative Editor | 0/TBD | Not started | - |
 | 3. Code Execution | 0/TBD | Not started | - |
 | 4. Host Controls | 0/TBD | Not started | - |
