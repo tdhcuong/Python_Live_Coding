@@ -1,9 +1,11 @@
-import { EditorView, lineNumbers } from '@codemirror/view'
+import { EditorView, lineNumbers, keymap } from '@codemirror/view'
 import { EditorState } from '@codemirror/state'
 import { python } from '@codemirror/lang-python'
 import { oneDark } from '@codemirror/theme-one-dark'
 import { yCollab } from 'y-codemirror.next'
 import * as Y from 'yjs'
+import { defaultKeymap, indentWithTab } from '@codemirror/commands'
+import { indentOnInput } from '@codemirror/language'
 
 export function createEditor(container, ytext, awareness, myUser) {
   const undoManager = new Y.UndoManager(ytext)
@@ -23,6 +25,8 @@ export function createEditor(container, ytext, awareness, myUser) {
       python(),                                         // EDIT-02: Python syntax highlighting
       yCollab(ytext, awareness, { undoManager }),        // EDIT-01/EDIT-03: CRDT sync + remote cursors
       EditorView.theme({ '&': { height: '100%' } }),    // Pitfall 6: explicit height
+      indentOnInput(),                                    // Auto-indent on Enter after colon/bracket
+      keymap.of([...defaultKeymap, indentWithTab]),       // Standard keybindings + Tab indents
     ],
   })
 
