@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: Ready to begin Phase 03
-stopped_at: Phase 03 context gathered (defaults)
-last_updated: "2026-04-02T11:40:43.722Z"
+stopped_at: Completed 03-01-PLAN.md
+last_updated: "2026-04-02T16:17:36.007Z"
 last_activity: 2026-04-02
 progress:
   total_phases: 5
-  completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
+  completed_phases: 3
+  total_plans: 6
+  completed_plans: 6
   percent: 67
 ---
 
@@ -56,6 +56,7 @@ Progress: [██████░░░░] 67%
 | Phase 01-room-infrastructure P03 | 10 | 3 tasks | 5 files |
 | Phase 01-room-infrastructure P03 | 45 | 3 tasks | 5 files |
 | Phase 02-collaborative-editor P02 | resumed | 3 tasks | 5 files |
+| Phase 03 P01 | 3 | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -79,6 +80,8 @@ Recent decisions affecting current work:
 - [Phase 02-collaborative-editor]: Editor mounted in onRoomState after Y.js flush (not in renderRoomView) — prevents late-joiner state loss at mount time
 - [Phase 02-collaborative-editor]: RoomProvider takes wsSend callback not raw WS object — decouples CRDT bridge from transport
 - [Phase 02-collaborative-editor]: YTEXT_KEY='python-code' exported as constant from provider.js — prevents ydoc getText() key mismatch
+- [Phase 03]: RLIMIT_AS omitted on macOS: virtual address ~400GB causes preexec_fn failure; rely on RLIMIT_CPU + TimeoutExpired
+- [Phase 03]: test_timeout_produces_timed_out accepts SIGXCPU (exit=-24) or TimeoutExpired — both valid kill outcomes on macOS
 
 ### Pending Todos
 
@@ -97,7 +100,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-02T11:40:43.720Z
-Stopped at: Phase 03 context gathered (defaults)
+Last session: 2026-04-02T16:17:36.005Z
+Stopped at: Completed 03-01-PLAN.md
 Last activity: 2026-04-02 - Completed quick task 260402-pnu: Add auto-indentation to CodeMirror editor
-Resume file: .planning/phases/03-code-execution/03-CONTEXT.md
+Resume file: None

@@ -15,16 +15,16 @@
 
 ### Editor
 
-- [ ] **EDIT-01**: All participants share one code editor — edits sync in real time for everyone (Y.js CRDT)
+- [x] **EDIT-01**: All participants share one code editor — edits sync in real time for everyone (Y.js CRDT)
 - [x] **EDIT-02**: Editor displays Python syntax highlighting
 - [x] **EDIT-03**: Each participant's cursor is shown in a distinct color (multi-cursor presence)
 - [x] **EDIT-04**: Editor displays line numbers in the gutter
 
 ### Code Execution
 
-- [ ] **EXEC-01**: Any participant can trigger code execution via a Run button
-- [ ] **EXEC-02**: Code output (stdout/stderr) is broadcast to all participants simultaneously
-- [ ] **EXEC-03**: Execution is automatically killed after a timeout (prevents infinite loops)
+- [x] **EXEC-01**: Any participant can trigger code execution via a Run button
+- [x] **EXEC-02**: Code output (stdout/stderr) is broadcast to all participants simultaneously
+- [x] **EXEC-03**: Execution is automatically killed after a timeout (prevents infinite loops)
 - [ ] **EXEC-04**: Any participant can clear the output panel
 
 ### Host Controls
@@ -38,7 +38,7 @@
 
 - [ ] **UI-01**: Interface defaults to a dark theme
 - [ ] **UI-02**: Layout is responsive and usable at different screen sizes
-- [ ] **UI-03**: A "Running..." loading state is shown while code is executing
+- [x] **UI-03**: A "Running..." loading state is shown while code is executing
 - [ ] **UI-04**: UI is elegant, beautiful, and professional in design
 
 ### Tunneling
@@ -86,13 +86,13 @@
 | ROOM-03 | Phase 1 | Complete |
 | ROOM-04 | Phase 1 | Complete |
 | ROOM-05 | Phase 5 | Pending |
-| EDIT-01 | Phase 2 | Pending |
+| EDIT-01 | Phase 2 | Complete |
 | EDIT-02 | Phase 2 | Complete |
 | EDIT-03 | Phase 2 | Complete |
 | EDIT-04 | Phase 2 | Complete |
-| EXEC-01 | Phase 3 | Pending |
-| EXEC-02 | Phase 3 | Pending |
-| EXEC-03 | Phase 3 | Pending |
+| EXEC-01 | Phase 3 | Complete |
+| EXEC-02 | Phase 3 | Complete |
+| EXEC-03 | Phase 3 | Complete |
 | EXEC-04 | Phase 3 | Pending |
 | HOST-01 | Phase 4 | Pending |
 | HOST-02 | Phase 4 | Pending |
@@ -100,7 +100,7 @@
 | HOST-04 | Phase 4 | Pending |
 | UI-01 | Phase 5 | Pending |
 | UI-02 | Phase 5 | Pending |
-| UI-03 | Phase 3 | Pending |
+| UI-03 | Phase 3 | Complete |
 | UI-04 | Phase 5 | Pending |
 | TUNA-01 | Phase 5 | Pending |
 | TUNA-02 | Phase 5 | Pending |
@@ -113,4 +113,4 @@
 
 ---
 *Requirements defined: 2026-04-01*
-*Last updated: 2026-04-01 after initial definition*
+*Last updated: 2026-04-02 — EDIT-01 marked complete after Phase 2 verification*

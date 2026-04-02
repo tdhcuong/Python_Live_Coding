@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Room Infrastructure** - WebSocket rooms, participant presence, and real-time join/leave events (completed 2026-04-01)
 - [x] **Phase 2: Collaborative Editor** - Y.js CRDT sync, CodeMirror 6, multi-cursor presence, syntax highlighting (completed 2026-04-02)
-- [ ] **Phase 3: Code Execution** - Sandboxed Python subprocess, output broadcast to all participants, execution UX
+- [x] **Phase 3: Code Execution** - Sandboxed Python subprocess, output broadcast to all participants, execution UX (completed 2026-04-02)
 - [ ] **Phase 4: Host Controls** - Problem description panel, countdown timer, host token gating, editor reset
 - [ ] **Phase 5: Polish and Tunneling** - Dark theme, responsive layout, copy link, localtunnel + ngrok setup
 
@@ -97,6 +97,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Room Infrastructure | 3/3 | Complete   | 2026-04-01 |
 | 2. Collaborative Editor | 2/2 | Complete   | 2026-04-02 |
-| 3. Code Execution | 0/TBD | Not started | - |
+| 3. Code Execution | 1/1 | Complete   | 2026-04-02 |
 | 4. Host Controls | 0/TBD | Not started | - |
 | 5. Polish and Tunneling | 0/TBD | Not started | - |
