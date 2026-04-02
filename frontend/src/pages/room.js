@@ -1,3 +1,7 @@
+import * as Y from 'yjs'
+import { Awareness } from 'y-protocols/awareness'
+import { createEditor } from '../editor/setup.js'
+import { RoomProvider, YTEXT_KEY } from '../editor/provider.js'
 import { createRoomWS } from "../ws.js";
 
 const API_BASE = "http://localhost:8000";
@@ -94,6 +98,12 @@ function connectToRoom(container, roomId, myName) {
   let participants = {};  // id -> { id, name, color }
   let myId = null;
 
+  // Y.js collaborative document setup
+  const ydoc = new Y.Doc()
+  const awareness = new Awareness(ydoc)
+  const ytext = ydoc.getText(YTEXT_KEY)
+  let provider = null
+
   const ws = createRoomWS(roomId, myName, {
     onRoomState: (msg) => {
       myId = msg.your_id;
@@ -103,6 +113,24 @@ function connectToRoom(container, roomId, myName) {
         participants[p.id] = p;
       }
       renderRoomView(container, roomId, myId, participants, ws);
+
+      // Initialize Y.js provider AFTER ws.send is available
+      provider = new RoomProvider(ydoc, awareness, ws.send.bind(ws))
+
+      // D-03: Set initial content if this is a fresh room (ytext is empty after late-joiner flush)
+      if (ytext.toString() === '') {
+        ytext.insert(0, '# Write your solution here\n')
+      }
+
+      // Mount CodeMirror editor into the <main> element
+      const mainEl = container.querySelector('main')
+      // D-06: Editor fills main area — replace placeholder, set height
+      mainEl.innerHTML = ''
+      mainEl.className = 'flex-1 overflow-hidden'
+      mainEl.style.height = '100%'
+
+      const myUser = participants[myId]
+      createEditor(mainEl, ytext, awareness, myUser)
     },
 
     onParticipantJoined: (msg) => {
@@ -123,7 +151,30 @@ function connectToRoom(container, roomId, myName) {
       console.error("[room] Server error:", msg.message);
     },
 
+    onYjsUpdate: (msg) => {
+      if (provider) {
+        provider.applyRemoteUpdate(msg.update)
+      } else {
+        // Late-joiner flush: updates arrive before room_state/provider init
+        const bytes = Uint8Array.from(atob(msg.update), c => c.charCodeAt(0))
+        Y.applyUpdate(ydoc, bytes)
+      }
+    },
+
+    onAwarenessUpdate: (msg) => {
+      if (provider) {
+        provider.applyRemoteAwareness(msg.update)
+      }
+    },
+
     onClose: (event) => {
+      if (provider) {
+        provider.destroy()
+        provider = null
+      }
+      awareness.destroy()
+      ydoc.destroy()
+
       if (event.code === 4004) {
         renderRoomNotFound(container, roomId);
       } else if (event.code !== 1000) {
@@ -166,11 +217,9 @@ function renderRoomView(container, roomId, myId, participants, ws) {
           </ul>
         </aside>
 
-        <!-- Room content (Phase 2 will add editor here) -->
-        <main class="flex-1 flex items-center justify-center p-8">
-          <div class="text-center">
-            <p class="text-gray-500 text-sm">Editor coming in Phase 2.</p>
-          </div>
+        <!-- Editor area: CodeMirror mounted here by onRoomState handler -->
+        <main id="editor-container" class="flex-1 overflow-hidden">
+          <!-- CodeMirror editor mounted here -->
         </main>
       </div>
 

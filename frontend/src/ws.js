@@ -44,8 +44,14 @@ export function createRoomWS(roomId, name, handlers = {}) {
       case "error":
         handlers.onError?.(msg);
         break;
+      case "yjs_update":
+        handlers.onYjsUpdate?.(msg);
+        break;
+      case "awareness_update":
+        handlers.onAwarenessUpdate?.(msg);
+        break;
       default:
-        // Unknown messages are logged but not thrown — Phase 2+ will add more types
+        // Unknown messages are logged but not thrown
         console.debug("[ws] Unhandled message type:", msg.type, msg);
     }
   });
