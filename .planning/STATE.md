@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Ready to begin Phase 03
-stopped_at: Completed 03-01-PLAN.md
-last_updated: "2026-04-02T16:17:36.007Z"
+status: Phase 03 complete — ready for Phase 04
+stopped_at: Phase 03 verified (17/17 tests pass)
+last_updated: "2026-04-02T16:30:00.000Z"
 last_activity: 2026-04-02
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 6
   completed_plans: 6
-  percent: 67
+  percent: 80
 ---
 
 # Project State
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-01)
 
 **Core value:** Multiple people can join a session, edit the same code together in real time, run Python, and see the output — all in a polished, professional UI.
-**Current focus:** Phase 03 — code-execution (next)
+**Current focus:** Phase 04 — host-controls (next)
 
 ## Current Position
 
-Phase: 02 (collaborative-editor) — COMPLETE (verified 2026-04-02)
-Phase: 03 (code-execution) — NOT STARTED
-Status: Ready to begin Phase 03
+Phase: 03 (code-execution) — COMPLETE (verified 2026-04-02)
+Phase: 04 (host-controls) — NOT STARTED
+Status: Phase 03 complete — ready for Phase 04
 Last activity: 2026-04-02
 
 Progress: [██████░░░░] 67%
@@ -89,7 +89,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 3 gap: RLIMIT_AS behavior differs on macOS vs Linux — verify which resource limits take effect in the dev environment.
+- ~~Phase 3 gap: RLIMIT_AS omitted — RLIMIT_CPU + NPROC used instead (macOS incompatible, resolved)~~
 - Phase 5 research flag: localtunnel WebSocket upgrade behavior cannot be verified without running the tunnel live. Test with `wscat` early. If unreliable, use ngrok.
 
 ### Quick Tasks Completed
