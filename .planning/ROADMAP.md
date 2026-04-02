@@ -13,7 +13,7 @@ Build in strict dependency order: WebSocket room infrastructure first, then the 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Room Infrastructure** - WebSocket rooms, participant presence, and real-time join/leave events (completed 2026-04-01)
-- [ ] **Phase 2: Collaborative Editor** - Y.js CRDT sync, CodeMirror 6, multi-cursor presence, syntax highlighting
+- [x] **Phase 2: Collaborative Editor** - Y.js CRDT sync, CodeMirror 6, multi-cursor presence, syntax highlighting (completed 2026-04-02)
 - [ ] **Phase 3: Code Execution** - Sandboxed Python subprocess, output broadcast to all participants, execution UX
 - [ ] **Phase 4: Host Controls** - Problem description panel, countdown timer, host token gating, editor reset
 - [ ] **Phase 5: Polish and Tunneling** - Dark theme, responsive layout, copy link, localtunnel + ngrok setup
@@ -47,8 +47,8 @@ Plans:
   5. Line numbers are visible in the editor gutter
 **Plans**: 2 plans
 Plans:
-- [ ] 02-01-PLAN.md — Backend Y.js relay: Room model accumulator + WebSocket relay for yjs_update/awareness_update + late-joiner flush + integration tests
-- [ ] 02-02-PLAN.md — Frontend collaborative editor: CodeMirror 6 + Y.js provider + syntax highlighting + multi-cursor + line numbers
+- [x] 02-01-PLAN.md — Backend Y.js relay: Room model accumulator + WebSocket relay for yjs_update/awareness_update + late-joiner flush + integration tests
+- [x] 02-02-PLAN.md — Frontend collaborative editor: CodeMirror 6 + Y.js provider + syntax highlighting + multi-cursor + line numbers
 **UI hint**: yes
 
 ### Phase 3: Code Execution
@@ -96,7 +96,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Room Infrastructure | 3/3 | Complete   | 2026-04-01 |
-| 2. Collaborative Editor | 0/2 | Not started | - |
+| 2. Collaborative Editor | 2/2 | Complete   | 2026-04-02 |
 | 3. Code Execution | 0/TBD | Not started | - |
 | 4. Host Controls | 0/TBD | Not started | - |
 | 5. Polish and Tunneling | 0/TBD | Not started | - |

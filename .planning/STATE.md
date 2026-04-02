@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 2 context gathered (defaults — user skipped)
-last_updated: "2026-04-02T01:29:16.581Z"
-last_activity: 2026-04-02 -- Phase 02 execution started
+stopped_at: Completed 02-02-PLAN.md — Phase 02 complete
+last_updated: "2026-04-02T11:12:43.529Z"
+last_activity: 2026-04-02
 progress:
   total_phases: 5
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 5
-  completed_plans: 3
+  completed_plans: 5
   percent: 67
 ---
 
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-04-01)
 ## Current Position
 
 Phase: 02 (collaborative-editor) — EXECUTING
-Plan: 1 of 2
-Status: Executing Phase 02
-Last activity: 2026-04-02 -- Phase 02 execution started
+Plan: 2 of 2
+Status: Ready to execute
+Last activity: 2026-04-02
 
 Progress: [██████░░░░] 67%
 
@@ -55,6 +55,7 @@ Progress: [██████░░░░] 67%
 | Phase 01-room-infrastructure P01 | 2 | 2 tasks | 9 files |
 | Phase 01-room-infrastructure P03 | 10 | 3 tasks | 5 files |
 | Phase 01-room-infrastructure P03 | 45 | 3 tasks | 5 files |
+| Phase 02-collaborative-editor P02 | resumed | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,9 @@ Recent decisions affecting current work:
 - [Phase 01-room-infrastructure]: renderRoom is async and verifies room existence via GET /room/{id} before showing name form
 - [Phase 01-room-infrastructure]: createRoomWS sends join_room in WebSocket open handler — guarantees protocol step 1 fires before any other message
 - [Phase 01-room-infrastructure]: renderRoom is async and verifies room existence via GET /room/{id} before showing name form
+- [Phase 02-collaborative-editor]: Editor mounted in onRoomState after Y.js flush (not in renderRoomView) — prevents late-joiner state loss at mount time
+- [Phase 02-collaborative-editor]: RoomProvider takes wsSend callback not raw WS object — decouples CRDT bridge from transport
+- [Phase 02-collaborative-editor]: YTEXT_KEY='python-code' exported as constant from provider.js — prevents ydoc getText() key mismatch
 
 ### Pending Todos
 
@@ -88,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-01T17:55:43.125Z
-Stopped at: Phase 2 context gathered (defaults — user skipped)
-Resume file: .planning/phases/02-collaborative-editor/02-CONTEXT.md
+Last session: 2026-04-02T11:12:43.527Z
+Stopped at: Completed 02-02-PLAN.md — Phase 02 complete
+Resume file: None

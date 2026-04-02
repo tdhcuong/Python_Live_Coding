@@ -16,9 +16,9 @@
 ### Editor
 
 - [ ] **EDIT-01**: All participants share one code editor — edits sync in real time for everyone (Y.js CRDT)
-- [ ] **EDIT-02**: Editor displays Python syntax highlighting
-- [ ] **EDIT-03**: Each participant's cursor is shown in a distinct color (multi-cursor presence)
-- [ ] **EDIT-04**: Editor displays line numbers in the gutter
+- [x] **EDIT-02**: Editor displays Python syntax highlighting
+- [x] **EDIT-03**: Each participant's cursor is shown in a distinct color (multi-cursor presence)
+- [x] **EDIT-04**: Editor displays line numbers in the gutter
 
 ### Code Execution
 
@@ -87,9 +87,9 @@
 | ROOM-04 | Phase 1 | Complete |
 | ROOM-05 | Phase 5 | Pending |
 | EDIT-01 | Phase 2 | Pending |
-| EDIT-02 | Phase 2 | Pending |
-| EDIT-03 | Phase 2 | Pending |
-| EDIT-04 | Phase 2 | Pending |
+| EDIT-02 | Phase 2 | Complete |
+| EDIT-03 | Phase 2 | Complete |
+| EDIT-04 | Phase 2 | Complete |
 | EXEC-01 | Phase 3 | Pending |
 | EXEC-02 | Phase 3 | Pending |
 | EXEC-03 | Phase 3 | Pending |
