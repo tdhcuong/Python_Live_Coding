@@ -2,6 +2,7 @@ import base64
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
+from .executor import run_python_async
 from .room_manager import RoomManager
 
 app = FastAPI(title="Python Live Coding")
@@ -157,6 +158,37 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
             elif msg_type == "awareness_update":
                 # Awareness is transient — relay only, never accumulate (Pitfall 4)
                 await manager.broadcast_to_room(room_id, data, exclude_id=participant_id)
+
+            elif msg_type == "run_code":
+                # D-01: WebSocket-only execution flow
+                if room.is_running:
+                    # Reject concurrent run with personal error (Pitfall 4)
+                    await manager.send_personal(websocket, {
+                        "type": "error",
+                        "message": "Execution already in progress",
+                    })
+                    continue
+
+                code = data.get("code", "")
+                if not isinstance(code, str):
+                    continue
+
+                room.is_running = True
+                # D-11: Broadcast execution_start BEFORE awaiting (disables Run everywhere)
+                await manager.broadcast_to_room(room_id, {"type": "execution_start"})
+
+                try:
+                    result = await run_python_async(code)
+                finally:
+                    room.is_running = False
+
+                await manager.broadcast_to_room(room_id, {
+                    "type": "execution_result",
+                    "stdout": result.stdout,
+                    "stderr": result.stderr,
+                    "exit_code": result.exit_code,
+                    "timed_out": result.timed_out,
+                })
 
             else:
                 await manager.send_personal(websocket, {

@@ -33,4 +33,5 @@ class Room:
     host_token: str                           # opaque UUID token — required for host-only actions (Phase 4)
     participants: dict[str, Participant] = field(default_factory=dict)
     yjs_updates: list[bytes] = field(default_factory=list)  # Phase 2: accumulated CRDT updates
+    is_running: bool = False  # Phase 3: concurrent execution guard
     # Phase 4 will add: problem: str | None = None, timer: dict | None = None
