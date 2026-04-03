@@ -44,6 +44,8 @@ export function renderHome(container) {
       const resp = await fetch(`${API_BASE}/create-room`, { method: "POST" });
       if (!resp.ok) throw new Error(`Server error: ${resp.status}`);
       const data = await resp.json();
+      // Store host token in sessionStorage keyed by room_id for host controls
+      sessionStorage.setItem(`host_token:${data.room_id}`, data.host_token)
       // Navigate to the room page (client-side routing)
       window.history.pushState({}, "", `/room/${data.room_id}`);
       window.dispatchEvent(new PopStateEvent("popstate"));

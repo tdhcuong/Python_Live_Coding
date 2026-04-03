@@ -50,6 +50,21 @@ export function createRoomWS(roomId, name, handlers = {}) {
       case "awareness_update":
         handlers.onAwarenessUpdate?.(msg);
         break;
+      case "execution_start":
+        handlers.onExecutionStart?.(msg);
+        break;
+      case "execution_result":
+        handlers.onExecutionResult?.(msg);
+        break;
+      case "problem_update":
+        handlers.onProblemUpdate?.(msg);
+        break;
+      case "timer_start":
+        handlers.onTimerStart?.(msg);
+        break;
+      case "reset_editor":
+        handlers.onResetEditor?.(msg);
+        break;
       default:
         // Unknown messages are logged but not thrown
         console.debug("[ws] Unhandled message type:", msg.type, msg);
