@@ -193,6 +193,38 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
                     "timed_out": result.timed_out,
                 })
 
+            elif msg_type == "set_problem":
+                if data.get("host_token") != room.host_token:
+                    await manager.send_personal(websocket, {"type": "error", "message": "Unauthorized"})
+                    continue
+                problem = str(data.get("problem", ""))[:2000]
+                room.problem = problem
+                await manager.broadcast_to_room(room_id, {"type": "problem_update", "problem": problem})
+
+            elif msg_type == "start_timer":
+                if data.get("host_token") != room.host_token:
+                    await manager.send_personal(websocket, {"type": "error", "message": "Unauthorized"})
+                    continue
+                duration = int(data.get("duration", 0))
+                if duration not in (5, 10, 15, 20, 30):
+                    continue  # silently ignore invalid durations (D-09 whitelist)
+                from datetime import datetime, timezone
+                started_at = datetime.now(timezone.utc).isoformat()
+                room.timer = {"started_at": started_at, "duration": duration * 60}
+                await manager.broadcast_to_room(room_id, {
+                    "type": "timer_start",
+                    "started_at": started_at,
+                    "duration": duration * 60,
+                })
+
+            elif msg_type == "reset_editor":
+                if data.get("host_token") != room.host_token:
+                    await manager.send_personal(websocket, {"type": "error", "message": "Unauthorized"})
+                    continue
+                room.yjs_updates.clear()  # CRITICAL: clear so late joiners don't get pre-reset state
+                content = "# Write your solution here\n"
+                await manager.broadcast_to_room(room_id, {"type": "reset_editor", "content": content})
+
             else:
                 await manager.send_personal(websocket, {
                     "type": "error",
