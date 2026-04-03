@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: active
-stopped_at: Phase 04 plans created (2 plans, 2 waves) — ready to execute
-last_updated: "2026-04-03T00:00:00.000Z"
+status: executing
+stopped_at: Completed 04-host-controls-01-PLAN.md
+last_updated: "2026-04-03T05:20:04.934Z"
 last_activity: 2026-04-03
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 8
-  completed_plans: 6
+  completed_plans: 7
   percent: 67
 ---
 
@@ -21,14 +21,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-01)
 
 **Core value:** Multiple people can join a session, edit the same code together in real time, run Python, and see the output — all in a polished, professional UI.
-**Current focus:** Phase 04 — host-controls (next)
+**Current focus:** Phase 04 — host-controls
 
 ## Current Position
 
-Phase: 03 (code-execution) — COMPLETE (verified 2026-04-02)
+Phase: 04 (host-controls) — EXECUTING
+Plan: 2 of 2
 Phase: 04 (host-controls) — PLANNED (2 plans, 2 waves)
-Status: Phase 03 complete — ready for Phase 04
-Last activity: 2026-04-02
+Status: Ready to execute
+Last activity: 2026-04-03
 
 Progress: [██████░░░░] 67%
 
@@ -57,6 +58,7 @@ Progress: [██████░░░░] 67%
 | Phase 01-room-infrastructure P03 | 45 | 3 tasks | 5 files |
 | Phase 02-collaborative-editor P02 | resumed | 3 tasks | 5 files |
 | Phase 03 P01 | 3 | 3 tasks | 5 files |
+| Phase 04-host-controls P01 | 15 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -82,6 +84,9 @@ Recent decisions affecting current work:
 - [Phase 02-collaborative-editor]: YTEXT_KEY='python-code' exported as constant from provider.js — prevents ydoc getText() key mismatch
 - [Phase 03]: RLIMIT_AS omitted on macOS: virtual address ~400GB causes preexec_fn failure; rely on RLIMIT_CPU + TimeoutExpired
 - [Phase 03]: test_timeout_produces_timed_out accepts SIGXCPU (exit=-24) or TimeoutExpired — both valid kill outcomes on macOS
+- [Phase 04-host-controls]: Timer duration stored as seconds in room.timer and timer_start broadcast — client never needs to convert
+- [Phase 04-host-controls]: host_token never present in any broadcast message — tested explicitly as Pitfall 3 guard
+- [Phase 04-host-controls]: Invalid timer durations silently ignored (not error) to prevent whitelist leakage via error messages
 
 ### Pending Todos
 
@@ -100,7 +105,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-02T16:33:56.625Z
-Stopped at: Phase 4 context gathered (assumptions mode)
+Last session: 2026-04-03T05:20:04.932Z
+Stopped at: Completed 04-host-controls-01-PLAN.md
 Last activity: 2026-04-02 - Completed quick task 260402-pnu: Add auto-indentation to CodeMirror editor
-Resume file: .planning/phases/04-host-controls/04-CONTEXT.md
+Resume file: None

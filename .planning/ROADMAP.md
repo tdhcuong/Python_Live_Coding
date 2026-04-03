@@ -74,7 +74,7 @@ Plans:
   4. The host can reset the editor to a starting template, which updates the shared editor for all participants
 **Plans**: 2 plans
 Plans:
-- [ ] 04-01-PLAN.md — Backend extensions: Room dataclass (problem + timer fields), set_problem/start_timer/reset_editor handlers, room_state extension, integration tests
+- [x] 04-01-PLAN.md — Backend extensions: Room dataclass (problem + timer fields), set_problem/start_timer/reset_editor handlers, room_state extension, integration tests
 - [ ] 04-02-PLAN.md — Frontend: execution UI (Run, output panel, toolbar), host controls (problem panel, timer, reset), layout restructure, ws.js/home.js wiring
 **UI hint**: yes
 
@@ -101,5 +101,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Room Infrastructure | 3/3 | Complete   | 2026-04-01 |
 | 2. Collaborative Editor | 2/2 | Complete   | 2026-04-02 |
 | 3. Code Execution | 1/1 | Complete   | 2026-04-02 |
-| 4. Host Controls | 0/2 | Not started | - |
+| 4. Host Controls | 1/2 | In Progress|  |
 | 5. Polish and Tunneling | 0/TBD | Not started | - |

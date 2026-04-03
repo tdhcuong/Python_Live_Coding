@@ -29,10 +29,10 @@
 
 ### Host Controls
 
-- [ ] **HOST-01**: Host can set a problem description that is visible to all participants
-- [ ] **HOST-02**: Host can start a countdown timer with a chosen duration, visible to all
+- [x] **HOST-01**: Host can set a problem description that is visible to all participants
+- [x] **HOST-02**: Host can start a countdown timer with a chosen duration, visible to all
 - [ ] **HOST-03**: A visual/audio alert fires when the countdown reaches zero
-- [ ] **HOST-04**: Host can reset the editor content back to a starting template
+- [x] **HOST-04**: Host can reset the editor content back to a starting template
 
 ### UI & Polish
 
@@ -94,10 +94,10 @@
 | EXEC-02 | Phase 3 | Complete |
 | EXEC-03 | Phase 3 | Complete |
 | EXEC-04 | Phase 3 | Pending |
-| HOST-01 | Phase 4 | Pending |
-| HOST-02 | Phase 4 | Pending |
+| HOST-01 | Phase 4 | Complete |
+| HOST-02 | Phase 4 | Complete |
 | HOST-03 | Phase 4 | Pending |
-| HOST-04 | Phase 4 | Pending |
+| HOST-04 | Phase 4 | Complete |
 | UI-01 | Phase 5 | Pending |
 | UI-02 | Phase 5 | Pending |
 | UI-03 | Phase 3 | Complete |
