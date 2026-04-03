@@ -25,13 +25,13 @@
 - [x] **EXEC-01**: Any participant can trigger code execution via a Run button
 - [x] **EXEC-02**: Code output (stdout/stderr) is broadcast to all participants simultaneously
 - [x] **EXEC-03**: Execution is automatically killed after a timeout (prevents infinite loops)
-- [ ] **EXEC-04**: Any participant can clear the output panel
+- [x] **EXEC-04**: Any participant can clear the output panel
 
 ### Host Controls
 
 - [x] **HOST-01**: Host can set a problem description that is visible to all participants
 - [x] **HOST-02**: Host can start a countdown timer with a chosen duration, visible to all
-- [ ] **HOST-03**: A visual/audio alert fires when the countdown reaches zero
+- [x] **HOST-03**: A visual/audio alert fires when the countdown reaches zero
 - [x] **HOST-04**: Host can reset the editor content back to a starting template
 
 ### UI & Polish
@@ -93,10 +93,10 @@
 | EXEC-01 | Phase 3 | Complete |
 | EXEC-02 | Phase 3 | Complete |
 | EXEC-03 | Phase 3 | Complete |
-| EXEC-04 | Phase 3 | Pending |
+| EXEC-04 | Phase 3 | Complete |
 | HOST-01 | Phase 4 | Complete |
 | HOST-02 | Phase 4 | Complete |
-| HOST-03 | Phase 4 | Pending |
+| HOST-03 | Phase 4 | Complete |
 | HOST-04 | Phase 4 | Complete |
 | UI-01 | Phase 5 | Pending |
 | UI-02 | Phase 5 | Pending |
