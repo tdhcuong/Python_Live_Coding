@@ -1,9 +1,9 @@
 ---
-status: complete
+status: diagnosed
 phase: 04-host-controls
 source: 04-01-SUMMARY.md, 04-02-SUMMARY.md
 started: 2026-04-03T06:00:00Z
-updated: 2026-04-03T06:10:00Z
+updated: 2026-04-03T06:15:00Z
 ---
 
 ## Current Test
@@ -66,11 +66,16 @@ blocked: 0
 ## Gaps
 
 - truth: "Host opens the problem panel, types a problem in the textarea, clicks Set Problem. The problem text appears for ALL participants immediately without a page reload."
-  status: failed
+  status: resolved
   reason: "User reported: Problem panel is hidden by default — host cannot see the textarea or Set Problem button to set the first problem"
   severity: major
   test: 3
-  root_cause: ""
-  artifacts: []
-  missing: []
+  root_cause: "sessionStorage is per-tab. host_token is stored in sessionStorage by home.js on room creation, but if the host opens the room URL in a new tab (e.g. to test alongside participants), sessionStorage.getItem returns null. hostToken becomes null, the if(hostToken) block in onRoomState is skipped, and problemPanel.classList.remove('hidden') never runs. The panel stays hidden indefinitely for that tab."
+  artifacts:
+    - path: "frontend/src/pages/room.js"
+      issue: "line 225: uses sessionStorage (per-tab) — host_token lost if room opened in new tab"
+    - path: "frontend/src/pages/home.js"
+      issue: "line 48: sessionStorage.setItem stores host_token only in the creating tab"
+  missing:
+    - "Use localStorage instead of sessionStorage for host_token so it persists across tabs"
   debug_session: ""
