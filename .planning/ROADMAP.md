@@ -72,7 +72,10 @@ Plans:
   2. The host can start a countdown timer; all participants see the same remaining time regardless of when they joined
   3. A visual and audio alert fires when the countdown reaches zero
   4. The host can reset the editor to a starting template, which updates the shared editor for all participants
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 04-01-PLAN.md — Backend extensions: Room dataclass (problem + timer fields), set_problem/start_timer/reset_editor handlers, room_state extension, integration tests
+- [ ] 04-02-PLAN.md — Frontend: execution UI (Run, output panel, toolbar), host controls (problem panel, timer, reset), layout restructure, ws.js/home.js wiring
 **UI hint**: yes
 
 ### Phase 5: Polish and Tunneling
@@ -98,5 +101,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Room Infrastructure | 3/3 | Complete   | 2026-04-01 |
 | 2. Collaborative Editor | 2/2 | Complete   | 2026-04-02 |
 | 3. Code Execution | 1/1 | Complete   | 2026-04-02 |
-| 4. Host Controls | 0/TBD | Not started | - |
+| 4. Host Controls | 0/2 | Not started | - |
 | 5. Polish and Tunneling | 0/TBD | Not started | - |
