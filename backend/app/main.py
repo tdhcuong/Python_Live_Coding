@@ -131,6 +131,9 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
         "your_id": participant_id,
         "your_color": color,
         "participants": [p.to_dict() for p in room.participants.values()],
+        "problem": room.problem,       # None or str — HOST-01 late-joiner state
+        "timer": room.timer,           # None or {started_at, duration} — HOST-02 late-joiner state
+        "is_running": room.is_running, # bool — fixes Pitfall 4 (reconnect leaves Run stuck)
     })
 
     # Step 4: Broadcast participant_joined to everyone else in the room

@@ -34,4 +34,5 @@ class Room:
     participants: dict[str, Participant] = field(default_factory=dict)
     yjs_updates: list[bytes] = field(default_factory=list)  # Phase 2: accumulated CRDT updates
     is_running: bool = False  # Phase 3: concurrent execution guard
-    # Phase 4 will add: problem: str | None = None, timer: dict | None = None
+    problem: str | None = None   # Phase 4: HOST-01 — set by host via set_problem
+    timer: dict | None = None    # Phase 4: HOST-02 — {started_at: ISO str, duration: int seconds}
