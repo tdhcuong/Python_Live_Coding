@@ -13,7 +13,7 @@
  *   ws.send({ type: "some_event", data: "..." });
  *   ws.disconnect();
  */
-export function createRoomWS(roomId, name, handlers = {}) {
+export function createRoomWS(roomId, name, handlers = {}, hostToken = null) {
   const IS_DEV = window.location.port === '5173';
   const wsProtocol = (!IS_DEV && location.protocol === 'https:') ? 'wss' : 'ws';
   const wsHost = IS_DEV ? 'localhost:8000' : location.host;
@@ -22,7 +22,9 @@ export function createRoomWS(roomId, name, handlers = {}) {
 
   socket.addEventListener("open", () => {
     // Protocol step 1: send join_room immediately after connection opens
-    socket.send(JSON.stringify({ type: "join_room", name }));
+    const joinMsg = { type: "join_room", name };
+    if (hostToken) joinMsg.host_token = hostToken;
+    socket.send(JSON.stringify(joinMsg));
   });
 
   socket.addEventListener("message", (event) => {

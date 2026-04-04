@@ -92,6 +92,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
         return
 
     name = join_msg["name"].strip()[:32]  # cap display name at 32 chars
+    joining_as_host = join_msg.get("host_token") == room.host_token
 
     # Step 2: Register participant (assigns UUID + color, stores websocket)
     # Re-read room because another connection could have removed it (unlikely but safe)
@@ -122,6 +123,10 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
         websocket=websocket,
     )
     room.participants[participant_id] = participant
+
+    # Mark host participant so disconnect can trigger session_ended (Phase 5)
+    if joining_as_host:
+        room.host_participant_id = participant_id
 
     # Phase 2: Flush accumulated Y.js doc state to late joiner (D-05)
     for update_bytes in room.yjs_updates:
@@ -249,14 +254,20 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
         # Step 6: Remove participant and notify room (pitfall M4 + M7)
         removed = manager.disconnect(room_id, participant_id)
         if removed:
-            await manager.broadcast_to_room(
-                room_id,
-                {
-                    "type": "participant_left",
-                    "participant_id": participant_id,
-                    "name": name,
-                },
-            )
+            room = manager.get_room(room_id)
+            if room is not None and room.host_participant_id == participant_id:
+                # Host closed tab / disconnected — end session for everyone
+                await manager.broadcast_to_room(room_id, {"type": "session_ended"})
+                manager.remove_room(room_id)
+            else:
+                await manager.broadcast_to_room(
+                    room_id,
+                    {
+                        "type": "participant_left",
+                        "participant_id": participant_id,
+                        "name": name,
+                    },
+                )
 
 
 # ---------------------------------------------------------------------------

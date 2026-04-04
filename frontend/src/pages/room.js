@@ -717,7 +717,7 @@ function connectToRoom(container, roomId, myName) {
         }
       }
     },
-  });
+  }, hostToken);
 }
 
 function renderRoomView(container, roomId, myId, participants, ws) {
