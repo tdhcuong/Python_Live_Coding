@@ -240,6 +240,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
                     continue
                 await manager.broadcast_to_room(room_id, {"type": "session_ended"})
                 manager.remove_room(room_id)
+                break  # no more messages — finally block handles cleanup
 
             else:
                 await manager.send_personal(websocket, {
