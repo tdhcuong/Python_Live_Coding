@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:8000";
+const IS_DEV = window.location.port === '5173';
+const API_BASE = IS_DEV ? 'http://localhost:8000' : window.location.origin;
 
 export function renderHome(container) {
   container.innerHTML = `

@@ -14,7 +14,10 @@
  *   ws.disconnect();
  */
 export function createRoomWS(roomId, name, handlers = {}) {
-  const url = `ws://localhost:8000/ws/${roomId}`;
+  const IS_DEV = window.location.port === '5173';
+  const wsProtocol = (!IS_DEV && location.protocol === 'https:') ? 'wss' : 'ws';
+  const wsHost = IS_DEV ? 'localhost:8000' : location.host;
+  const url = `${wsProtocol}://${wsHost}/ws/${roomId}`;
   const socket = new WebSocket(url);
 
   socket.addEventListener("open", () => {
@@ -64,6 +67,9 @@ export function createRoomWS(roomId, name, handlers = {}) {
         break;
       case "reset_editor":
         handlers.onResetEditor?.(msg);
+        break;
+      case "session_ended":
+        handlers.onSessionEnded?.(msg);
         break;
       default:
         // Unknown messages are logged but not thrown

@@ -10,7 +10,8 @@ import { Markdown } from 'tiptap-markdown';
 import Underline from '@tiptap/extension-underline';
 import Placeholder from '@tiptap/extension-placeholder';
 
-const API_BASE = "http://localhost:8000";
+const IS_DEV = window.location.port === '5173';
+const API_BASE = IS_DEV ? 'http://localhost:8000' : window.location.origin;
 
 export async function renderRoom(container, roomId) {
   // Step 1: Verify room exists before showing the join form

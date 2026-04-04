@@ -1,6 +1,8 @@
 import base64
+from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.staticfiles import StaticFiles
 
 from .executor import run_python_async
 from .room_manager import RoomManager
@@ -22,11 +24,6 @@ manager = RoomManager()
 # ---------------------------------------------------------------------------
 # HTTP endpoints
 # ---------------------------------------------------------------------------
-
-@app.get("/")
-async def health_check():
-    return {"status": "ok"}
-
 
 @app.post("/create-room")
 async def create_room():
@@ -100,6 +97,12 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
     room = manager.get_room(room_id)
     if room is None:
         await websocket.close(code=4004, reason="Room not found")
+        return
+
+    # Reject duplicate display names within the same room
+    existing_names = {p.name.lower() for p in room.participants.values()}
+    if name.lower() in existing_names:
+        await websocket.close(code=4002, reason="Name already taken")
         return
 
     import uuid as _uuid
@@ -197,7 +200,7 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
                 if data.get("host_token") != room.host_token:
                     await manager.send_personal(websocket, {"type": "error", "message": "Unauthorized"})
                     continue
-                problem = str(data.get("problem", ""))[:2000]
+                problem = str(data.get("problem", ""))[:50000]
                 room.problem = problem
                 await manager.broadcast_to_room(room_id, {"type": "problem_update", "problem": problem})
 
@@ -225,6 +228,13 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
                 content = "# Write your solution here\n"
                 await manager.broadcast_to_room(room_id, {"type": "reset_editor", "content": content})
 
+            elif msg_type == "end_session":
+                if data.get("host_token") != room.host_token:
+                    await manager.send_personal(websocket, {"type": "error", "message": "Unauthorized"})
+                    continue
+                await manager.broadcast_to_room(room_id, {"type": "session_ended"})
+                manager.remove_room(room_id)
+
             else:
                 await manager.send_personal(websocket, {
                     "type": "error",
@@ -246,3 +256,11 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
                     "name": name,
                 },
             )
+
+
+# ---------------------------------------------------------------------------
+# Static file serving (production / tunnel mode)
+# ---------------------------------------------------------------------------
+_frontend_dist = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
+if _frontend_dist.is_dir():
+    app.mount("/", StaticFiles(directory=str(_frontend_dist), html=True), name="static")
