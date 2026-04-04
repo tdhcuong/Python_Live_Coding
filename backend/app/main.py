@@ -2,6 +2,7 @@ import base64
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from starlette.staticfiles import StaticFiles
 
 from .executor import run_python_async
@@ -263,4 +264,13 @@ async def websocket_endpoint(websocket: WebSocket, room_id: str):
 # ---------------------------------------------------------------------------
 _frontend_dist = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
 if _frontend_dist.is_dir():
-    app.mount("/", StaticFiles(directory=str(_frontend_dist), html=True), name="static")
+    # Serve Vite-generated assets (hashed filenames) from /assets
+    _assets_dir = _frontend_dist / "assets"
+    if _assets_dir.is_dir():
+        app.mount("/assets", StaticFiles(directory=str(_assets_dir)), name="assets")
+
+    # SPA catch-all: serve index.html for any unmatched path so client-side
+    # routing handles /room/{id} directly in the browser
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        return FileResponse(str(_frontend_dist / "index.html"))
