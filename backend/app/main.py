@@ -36,7 +36,7 @@ async def create_room():
     }
 
 
-@app.get("/room/{room_id}")
+@app.get("/api/room/{room_id}")
 async def get_room(room_id: str):
     """Return basic room info. 404 if room does not exist."""
     room = manager.get_room(room_id)

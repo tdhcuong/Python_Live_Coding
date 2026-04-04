@@ -17,7 +17,7 @@ export async function renderRoom(container, roomId) {
   // Step 1: Verify room exists before showing the join form
   let roomInfo;
   try {
-    const resp = await fetch(`${API_BASE}/room/${roomId}`);
+    const resp = await fetch(`${API_BASE}/api/room/${roomId}`);
     if (resp.status === 404) {
       renderRoomNotFound(container, roomId);
       return;
