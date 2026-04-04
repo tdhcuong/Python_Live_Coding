@@ -37,7 +37,7 @@ function renderNameForm(container, roomId) {
     <div class="flex items-center justify-center min-h-screen px-4">
       <div class="w-full max-w-sm">
         <div class="text-center mb-8">
-          <h1 class="text-3xl font-bold text-white mb-2">Join Session</h1>
+          <h1 class="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-2">Join Session</h1>
           <p class="text-gray-400 text-sm font-mono">
             Room: <span class="text-indigo-400">${roomId.slice(0, 8)}...</span>
           </p>
@@ -773,9 +773,12 @@ function renderRoomView(container, roomId, myId, participants, ws) {
       <div class="flex flex-1 overflow-hidden min-h-0">
         <!-- Sidebar: participant list -->
         <aside class="w-56 border-r border-gray-800 bg-gray-900 p-4 flex flex-col gap-3 shrink-0">
-          <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-            Participants
-          </h2>
+          <div class="flex items-center gap-2">
+            <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider border-l-2 border-indigo-500 pl-2">
+              Participants
+            </h2>
+            <span id="participant-count" class="text-xs text-gray-600 font-mono"></span>
+          </div>
           <ul id="participant-list" class="flex flex-col gap-2">
             <!-- Populated by updateParticipantList() -->
           </ul>
@@ -868,6 +871,10 @@ function updateParticipantList(container, myId, participants) {
 
     list.appendChild(li);
   }
+
+  // Update participant count badge
+  const countEl = container.querySelector('#participant-count');
+  if (countEl) countEl.textContent = Object.keys(participants).length;
 }
 
 function showToast(container, message) {
@@ -895,17 +902,22 @@ function showToast(container, message) {
 function renderRoomNotFound(container, roomId) {
   container.innerHTML = `
     <div class="flex items-center justify-center min-h-screen px-4">
-      <div class="text-center">
-        <h1 class="text-2xl font-bold text-white mb-3">Room Not Found</h1>
-        <p class="text-gray-400 mb-6">
-          Room <span class="font-mono text-indigo-400">${roomId.slice(0, 8)}...</span>
-          does not exist or has ended.
-        </p>
-        <a href="/"
-           onclick="event.preventDefault(); window.history.pushState({},'','/'); window.dispatchEvent(new PopStateEvent('popstate'))"
-           class="text-indigo-400 hover:text-indigo-300 underline">
-          Create a new room
-        </a>
+      <div class="w-full max-w-md text-center">
+        <div class="bg-gray-900 rounded-2xl border border-gray-800 p-8 shadow-2xl">
+          <h1 class="text-2xl font-bold text-white mb-3">Room Not Found</h1>
+          <p class="text-gray-400 mb-6">
+            Room <span class="font-mono text-indigo-400">${roomId.slice(0, 8)}...</span>
+            does not exist or has ended.
+          </p>
+          <a href="/"
+             onclick="event.preventDefault(); window.history.pushState({},'','/'); window.dispatchEvent(new PopStateEvent('popstate'))"
+             class="inline-block bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700
+                    text-white font-semibold py-2 px-5 rounded-xl transition-colors duration-150
+                    focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2
+                    focus:ring-offset-gray-900">
+            Create a new room
+          </a>
+        </div>
       </div>
     </div>
   `;
@@ -914,10 +926,20 @@ function renderRoomNotFound(container, roomId) {
 function renderRoomError(container, message) {
   container.innerHTML = `
     <div class="flex items-center justify-center min-h-screen px-4">
-      <div class="text-center">
-        <h1 class="text-2xl font-bold text-white mb-3">Connection Error</h1>
-        <p class="text-gray-400 mb-2">Could not connect to the server.</p>
-        <p class="text-red-400 text-sm font-mono">${message}</p>
+      <div class="w-full max-w-md text-center">
+        <div class="bg-gray-900 rounded-2xl border border-gray-800 p-8 shadow-2xl">
+          <h1 class="text-2xl font-bold text-white mb-3">Connection Error</h1>
+          <p class="text-gray-400 mb-2">Could not connect to the server.</p>
+          <p class="text-red-400 text-sm font-mono mb-6">${message}</p>
+          <a href="/"
+             onclick="event.preventDefault(); window.history.pushState({},'','/'); window.dispatchEvent(new PopStateEvent('popstate'))"
+             class="inline-block bg-gray-700 hover:bg-gray-600 text-gray-200 font-semibold
+                    py-2 px-5 rounded-xl transition-colors duration-150
+                    focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2
+                    focus:ring-offset-gray-900">
+            Go Home
+          </a>
+        </div>
       </div>
     </div>
   `;

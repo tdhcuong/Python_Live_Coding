@@ -1,4 +1,48 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Problem display — scrollbar only; typography handled by Tailwind prose */
+.problem-display::-webkit-scrollbar { width: 5px; }
+.problem-display::-webkit-scrollbar-track { background: transparent; }
+.problem-display::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+.problem-display::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* Tighter prose spacing for the problem panel (editor + viewer) */
+.ProseMirror p,
+.problem-display .prose p  { margin-top: 0.2rem; margin-bottom: 0.2rem; }
+.ProseMirror h1, .ProseMirror h2, .ProseMirror h3,
+.problem-display .prose h1, .problem-display .prose h2, .problem-display .prose h3 {
+  margin-top: 0.5rem; margin-bottom: 0.2rem;
+}
+.ProseMirror ul, .ProseMirror ol,
+.problem-display .prose ul, .problem-display .prose ol { margin-top: 0.2rem; margin-bottom: 0.2rem; }
+.ProseMirror li, .problem-display .prose li { margin-top: 0.1rem; margin-bottom: 0.1rem; }
+.ProseMirror blockquote, .problem-display .prose blockquote { margin-top: 0.3rem; margin-bottom: 0.3rem; }
+.ProseMirror pre, .problem-display .prose pre { margin-top: 0.3rem; margin-bottom: 0.3rem; }
+
+/* TipTap problem editor */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #4b5563;
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+.ProseMirror::-webkit-scrollbar { width: 5px; }
+.ProseMirror::-webkit-scrollbar-track { background: transparent; }
+.ProseMirror::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+.ProseMirror::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* Output panel scrollbar */
+#output-panel::-webkit-scrollbar { width: 5px; }
+#output-panel::-webkit-scrollbar-track { background: transparent; }
+#output-panel::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+#output-panel::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* Participant list scrollbar */
+#participant-list::-webkit-scrollbar { width: 4px; }
+#participant-list::-webkit-scrollbar-track { background: transparent; }
+#participant-list::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
 
 :root {
   --color-bg: #030712;

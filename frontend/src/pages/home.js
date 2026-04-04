@@ -5,7 +5,7 @@ export function renderHome(container) {
     <div class="flex items-center justify-center min-h-screen px-4">
       <div class="w-full max-w-md">
         <div class="text-center mb-10">
-          <h1 class="text-4xl font-bold text-white mb-3">Python Live Coding</h1>
+          <h1 class="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-3">Python Live Coding</h1>
           <p class="text-gray-400 text-lg">Collaborative Python sessions, no account required.</p>
         </div>
 
@@ -28,6 +28,8 @@ export function renderHome(container) {
 
           <p id="create-error" class="text-red-400 text-sm mt-3 hidden"></p>
         </div>
+
+        <p class="text-center text-gray-600 text-xs mt-8">Built for collaborative coding sessions</p>
       </div>
     </div>
   `;
