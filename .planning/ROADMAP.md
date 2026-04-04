@@ -90,7 +90,7 @@ Plans:
   5. The overall UI is elegant and professional — consistent typography, spacing, and color usage
 **Plans**: 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — UI polish: copy-link button, dark theme consistency, responsive layout, visual refinements
+- [x] 05-01-PLAN.md — UI polish: copy-link button, dark theme consistency, responsive layout, visual refinements
 - [ ] 05-02-PLAN.md — Tunnel setup: FastAPI static file serving, dynamic URL detection, start-tunnel.sh, tunnel verification
 **UI hint**: yes
 
@@ -105,4 +105,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Collaborative Editor | 2/2 | Complete   | 2026-04-02 |
 | 3. Code Execution | 1/1 | Complete   | 2026-04-02 |
 | 4. Host Controls | 2/2 | Complete   | 2026-04-03 |
-| 5. Polish and Tunneling | 0/2 | Not started | - |
+| 5. Polish and Tunneling | 1/2 | In Progress|  |

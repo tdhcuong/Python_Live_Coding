@@ -11,7 +11,7 @@
 - [x] **ROOM-02**: Participant can join a room by visiting the room URL
 - [x] **ROOM-03**: Participant sets a display name/nickname when joining
 - [x] **ROOM-04**: All participants can see a live list of who is currently in the room
-- [ ] **ROOM-05**: Host can copy the room link with a single click
+- [x] **ROOM-05**: Host can copy the room link with a single click
 
 ### Editor
 
@@ -36,10 +36,10 @@
 
 ### UI & Polish
 
-- [ ] **UI-01**: Interface defaults to a dark theme
-- [ ] **UI-02**: Layout is responsive and usable at different screen sizes
+- [x] **UI-01**: Interface defaults to a dark theme
+- [x] **UI-02**: Layout is responsive and usable at different screen sizes
 - [x] **UI-03**: A "Running..." loading state is shown while code is executing
-- [ ] **UI-04**: UI is elegant, beautiful, and professional in design
+- [x] **UI-04**: UI is elegant, beautiful, and professional in design
 
 ### Tunneling
 
@@ -85,7 +85,7 @@
 | ROOM-02 | Phase 1 | Complete |
 | ROOM-03 | Phase 1 | Complete |
 | ROOM-04 | Phase 1 | Complete |
-| ROOM-05 | Phase 5 | Pending |
+| ROOM-05 | Phase 5 | Complete |
 | EDIT-01 | Phase 2 | Complete |
 | EDIT-02 | Phase 2 | Complete |
 | EDIT-03 | Phase 2 | Complete |
@@ -98,10 +98,10 @@
 | HOST-02 | Phase 4 | Complete |
 | HOST-03 | Phase 4 | Complete |
 | HOST-04 | Phase 4 | Complete |
-| UI-01 | Phase 5 | Pending |
-| UI-02 | Phase 5 | Pending |
+| UI-01 | Phase 5 | Complete |
+| UI-02 | Phase 5 | Complete |
 | UI-03 | Phase 3 | Complete |
-| UI-04 | Phase 5 | Pending |
+| UI-04 | Phase 5 | Complete |
 | TUNA-01 | Phase 5 | Pending |
 | TUNA-02 | Phase 5 | Pending |
 | TUNA-03 | Phase 5 | Pending |
