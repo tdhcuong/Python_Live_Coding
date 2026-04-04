@@ -88,7 +88,10 @@ Plans:
   3. The app is reachable at a public URL via localtunnel (`lt`) and the collaborative editor and code execution work correctly through the tunnel
   4. The app is reachable at a public URL via ngrok and WebSocket connections remain stable without falling back to polling
   5. The overall UI is elegant and professional — consistent typography, spacing, and color usage
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — UI polish: copy-link button, dark theme consistency, responsive layout, visual refinements
+- [ ] 05-02-PLAN.md — Tunnel setup: FastAPI static file serving, dynamic URL detection, start-tunnel.sh, tunnel verification
 **UI hint**: yes
 
 ## Progress
@@ -102,4 +105,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Collaborative Editor | 2/2 | Complete   | 2026-04-02 |
 | 3. Code Execution | 1/1 | Complete   | 2026-04-02 |
 | 4. Host Controls | 2/2 | Complete   | 2026-04-03 |
-| 5. Polish and Tunneling | 0/TBD | Not started | - |
+| 5. Polish and Tunneling | 0/2 | Not started | - |
