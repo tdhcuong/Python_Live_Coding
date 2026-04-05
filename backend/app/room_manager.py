@@ -24,6 +24,10 @@ class RoomManager:
     def get_room(self, room_id: str) -> Room | None:
         return self.rooms.get(room_id)
 
+    def remove_room(self, room_id: str) -> None:
+        """Remove room from memory (called after session_ended broadcast)."""
+        self.rooms.pop(room_id, None)
+
     # -------------------------------------------------------------------------
     # Participant management
     # -------------------------------------------------------------------------

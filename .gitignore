@@ -16,3 +16,7 @@ dist/
 # Vite
 frontend/dist/
 frontend/.vite/
+
+# Local workflow artifacts
+.claude/
+.planning/

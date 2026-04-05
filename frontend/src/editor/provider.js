@@ -17,10 +17,15 @@ export class RoomProvider {
     }
     ydoc.on('update', this._updateHandler)
 
-    this._awarenessHandler = ({ changed }) => {
-      const update = encodeAwarenessUpdate(awareness, [awareness.clientID])
-      const b64 = btoa(String.fromCharCode(...update))
-      wsSend({ type: 'awareness_update', update: b64 })
+    let _awarenessDebounce = null
+    this._awarenessHandler = () => {
+      if (_awarenessDebounce) return
+      _awarenessDebounce = setTimeout(() => {
+        _awarenessDebounce = null
+        const update = encodeAwarenessUpdate(awareness, [awareness.clientID])
+        const b64 = btoa(String.fromCharCode(...update))
+        wsSend({ type: 'awareness_update', update: b64 })
+      }, 50)
     }
     awareness.on('change', this._awarenessHandler)
   }
